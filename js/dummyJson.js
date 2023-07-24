@@ -37,6 +37,10 @@ function makePostLiEl(arr, destHtmlEl) {
       // adding url parameter after "?"
       aEl.href = `single-post.html?postId=${postObj.id}`;
       aEl.textContent = postObj.id + ' (id) ' + postObj.title;
+      // sukurti mygtuka
+      // ideti i li
+      // uzdeti mygtukui funkcija deletePost()
+
       liEl.append(aEl);
       console.log('liEl ===', liEl);
       return liEl;
