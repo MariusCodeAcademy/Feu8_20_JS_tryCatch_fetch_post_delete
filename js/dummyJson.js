@@ -34,8 +34,9 @@ function makePostLiEl(arr, destHtmlEl) {
       // is js objektu padarom html elementus
       const liEl = document.createElement('li');
       const aEl = document.createElement('a');
-      aEl.href = 'single-post.html';
-      aEl.textContent = postObj.title;
+      // adding url parameter after "?"
+      aEl.href = `single-post.html?postId=${postObj.id}`;
+      aEl.textContent = postObj.id + ' (id) ' + postObj.title;
       liEl.append(aEl);
       console.log('liEl ===', liEl);
       return liEl;
