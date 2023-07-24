@@ -19,7 +19,16 @@ fetch(`https://dummyjson.com/posts/${currentPostId}`)
   .then((resp) => resp.json())
   .then((currentPost) => {
     console.log('currentPost ===', currentPost);
+    postObjToHtml(currentPost);
   })
   .catch((error) => console.warn(error));
 
 //'https://dummyjson.com/posts/1'
+
+function postObjToHtml(pObj) {
+  // irasyti i h1 title it objekto
+  els.title.textContent = pObj.title;
+  // perrasom paragrafa
+  els.body.textContent = pObj.body;
+  // sugeneruoti tagus
+}
