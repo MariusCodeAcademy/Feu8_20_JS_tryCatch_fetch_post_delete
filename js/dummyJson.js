@@ -38,10 +38,12 @@ function makePostLiEl(arr, destHtmlEl) {
       aEl.href = `single-post.html?postId=${postObj.id}`;
       aEl.textContent = postObj.id + ' (id) ' + postObj.title;
       // sukurti mygtuka
+      const btnEl = document.createElement('button');
+      btnEl.textContent = 'Remove';
       // ideti i li
       // uzdeti mygtukui funkcija deletePost()
 
-      liEl.append(aEl);
+      liEl.append(aEl, ' ', btnEl);
       console.log('liEl ===', liEl);
       return liEl;
     })
