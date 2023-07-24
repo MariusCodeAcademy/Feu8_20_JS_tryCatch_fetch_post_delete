@@ -40,7 +40,8 @@ function postObjToHtml(pObj) {
   const tagsLiArr = tagsToEls(pObj.tags);
   console.log('tagsLiArr ===', tagsLiArr);
   els.tags.innerHTML = '';
-  tagsLiArr.forEach((liEl) => els.tags.append(liEl));
+  // tagsLiArr.forEach((liEl) => els.tags.append(liEl));
+  els.tags.append(...tagsLiArr);
 }
 
 // ['magical', 'history', 'french']
