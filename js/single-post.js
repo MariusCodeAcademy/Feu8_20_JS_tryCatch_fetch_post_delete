@@ -31,4 +31,28 @@ function postObjToHtml(pObj) {
   // perrasom paragrafa
   els.body.textContent = pObj.body;
   // sugeneruoti tagus
+  // ['magical', 'history', 'french']
+  /* 
+    <li class="column">tag1</li>
+    <li class="column">tag1</li>
+    <li class="column">tag1</li>
+  */
+  const tagsLiArr = tagsToEls(pObj.tags);
+  console.log('tagsLiArr ===', tagsLiArr);
+  els.tags.innerHTML = '';
+  tagsLiArr.forEach((liEl) => els.tags.append(liEl));
 }
+
+// ['magical', 'history', 'french']
+function tagsToEls(tagsStringArr) {
+  const elArr = tagsStringArr.map((tagString) => {
+    const liEl = document.createElement('li');
+    liEl.textContent = tagString;
+    liEl.className = 'column';
+    // console.log('liEl ===', liEl);
+    return liEl;
+  });
+  // console.log('elArr ===', elArr);
+  return elArr;
+}
+// tagsToEls(['magical', 'history', 'french']);
