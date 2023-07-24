@@ -39,12 +39,12 @@ function makePostLiEl(arr, destHtmlEl) {
       aEl.textContent = postObj.id + ' (id) ' + postObj.title;
       // sukurti mygtuka
       const btnEl = document.createElement('button');
-      btnEl.textContent = 'Remove';
+      btnEl.textContent = 'X';
       // ideti i li
       // uzdeti mygtukui funkcija deletePost()
 
       liEl.append(aEl, ' ', btnEl);
-      console.log('liEl ===', liEl);
+      // console.log('liEl ===', liEl);
       return liEl;
     })
     .forEach((htmlEl) => {
