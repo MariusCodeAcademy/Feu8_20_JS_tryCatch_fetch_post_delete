@@ -40,6 +40,9 @@ function makePostLiEl(arr, destHtmlEl) {
       // sukurti mygtuka
       const btnEl = document.createElement('button');
       btnEl.textContent = 'X';
+      // prideti argumenta deletePostServer() tai as paverciu i arrow
+      // btnEl.addEventListener('click', deletePostServer);
+      btnEl.addEventListener('click', () => deletePostServer(postObj.id));
       // ideti i li
       // uzdeti mygtukui funkcija deletePost()
 
@@ -51,4 +54,13 @@ function makePostLiEl(arr, destHtmlEl) {
       // html elementus sudedam i dom
       destHtmlEl.append(htmlEl);
     });
+}
+
+function deletePostServer(idToDelete) {
+  console.log('delete me', idToDelete);
+  fetch(`https://dummyjson.com/posts/${idToDelete}`, {
+    method: 'DELETE',
+  }).then((resp) => {
+    // log resp
+  });
 }
