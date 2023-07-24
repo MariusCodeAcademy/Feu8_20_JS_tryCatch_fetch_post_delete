@@ -39,6 +39,8 @@ function makePostLiEl(arr, destHtmlEl) {
       aEl.textContent = postObj.id + ' (id) ' + postObj.title;
       // sukurti mygtuka
       const btnEl = document.createElement('button');
+      // prideti del mygukui data-postId=id
+      btnEl.dataset.postId = postObj.id;
       btnEl.textContent = 'X';
       // prideti argumenta deletePostServer() tai as paverciu i arrow
       // btnEl.addEventListener('click', deletePostServer);
@@ -60,7 +62,25 @@ function deletePostServer(idToDelete) {
   console.log('delete me', idToDelete);
   fetch(`https://dummyjson.com/posts/${idToDelete}`, {
     method: 'DELETE',
-  }).then((resp) => {
-    // log resp
-  });
+  })
+    .then((resp) => {
+      // log resp
+      console.log('resp ===', resp);
+      return resp.json();
+    })
+    .then((ats) => {
+      console.log('ats ===', ats);
+      // trinti lokaliai
+      localDelete(idToDelete);
+    })
+    .catch((error) => {
+      console.warn(error);
+    });
+}
+
+function localDelete(idToDelete) {
+  const foundBtn = document.querySelector(`[data-post-id='${idToDelete}']`);
+  console.log('found ===', foundBtn);
+  // istrinti mygtuko tevini li elementa
+  foundBtn.parentElement.remove();
 }
