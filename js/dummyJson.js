@@ -1,6 +1,11 @@
 'use strict';
 console.log('dummyJson.js file was loaded');
 
+const appEl = document.getElementById('app');
+if (appEl === null) {
+  throw 'Nera app el htmle';
+}
+
 // pariusti ir isknosolinti tik postus
 // https://dummyjson.com/posts
 
@@ -12,5 +17,31 @@ fetch(urlPosts)
     console.log('dataInJs ===', dataInJs);
     const postsArr = dataInJs.posts;
     console.log('postsArr ===', postsArr);
+    // console.log(JSON.stringify(postsArr[0], null, 2));
+    makePostLiEl(postsArr, appEl);
   })
   .catch((error) => console.warn(error));
+
+/**
+ *
+ * @param {Array} arr
+ * @param {HTMLElement} destHtmlEl
+ */
+function makePostLiEl(arr, destHtmlEl) {
+  destHtmlEl.innerHTML = '';
+  arr
+    .map((postObj) => {
+      // is js objektu padarom html elementus
+      const liEl = document.createElement('li');
+      const aEl = document.createElement('a');
+      aEl.href = 'single-post.html';
+      aEl.textContent = postObj.title;
+      liEl.append(aEl);
+      console.log('liEl ===', liEl);
+      return liEl;
+    })
+    .forEach((htmlEl) => {
+      // html elementus sudedam i dom
+      destHtmlEl.append(htmlEl);
+    });
+}
